@@ -8,7 +8,7 @@ import session from "express-session";
 import env from "./utils/validate-env";
 import MongoStore from "connect-mongo";
 import { requireAuth } from "./middleware";
-import path from 'path'
+import path from "path";
 
 const app = express();
 
@@ -30,13 +30,17 @@ app.use(
   })
 );
 
-app.use(express.static(path.join(__dirname, "../../frontend/dist")))
+app.use(express.static(path.join(__dirname, "../../frontend/dist")));
 
 app.use("/api/users", userRoutes);
 app.use("/api/notes", requireAuth, noteRoutes);
 
 app.use((req, res, next) => {
   next(createHttpError(404, "Endpoint not found"));
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../../frontend/dist", "index.html"));
 });
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
