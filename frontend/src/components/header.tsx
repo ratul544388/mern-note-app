@@ -14,57 +14,56 @@ export const Header = () => {
   const navigate = useNavigate();
 
   return (
-    <Container
-      element="header"
-      className="h-[60px] z-50 bg-background-2 sticky top-0 shadow-md flex items-center justify-between"
-    >
-      <Logo />
-      {isPending && (
-        <div className="flex items-center gap-5">
-          <Skeleton animation="wave" width={80} height={52} />
-          <Skeleton
-            animation="wave"
-            variant="circular"
-            width={32}
-            height={32}
-          />
-        </div>
-      )}
-      {user && (
-        <div className="flex items-center gap-5">
-          <Button
-            endIcon={<Add />}
-            onClick={() => {
-              onOpen("noteModal");
-              if (pathname === "/") {
-                navigate("/notes");
-              }
-            }}
-            variant="contained"
-          >
-            Add
-          </Button>
-          <UserButton />
-        </div>
-      )}
-      {!user && !isPending && (
-        <div className="flex gap-4">
-          <Button
-            onClick={() => onOpen("loginModal")}
-            variant="contained"
-            size="small"
-          >
-            Login
-          </Button>
-          <Button
-            onClick={() => onOpen("signupModal")}
-            variant="outlined"
-            size="small"
-          >
-            Signup
-          </Button>
-        </div>
-      )}
-    </Container>
+    <header className="h-[60px] max-w-full z-50 bg-background-2 sticky top-0 shadow-md">
+      <Container className="h-full flex items-center justify-between">
+        <Logo />
+        {isPending && (
+          <div className="flex items-center gap-5">
+            <Skeleton animation="wave" width={80} height={52} />
+            <Skeleton
+              animation="wave"
+              variant="circular"
+              width={32}
+              height={32}
+            />
+          </div>
+        )}
+        {user && (
+          <div className="flex items-center gap-5">
+            <Button
+              endIcon={<Add />}
+              onClick={() => {
+                onOpen("noteModal");
+                if (pathname === "/") {
+                  navigate("/notes");
+                }
+              }}
+              variant="contained"
+            >
+              Add
+            </Button>
+            <UserButton />
+          </div>
+        )}
+        {!user && !isPending && (
+          <div className="flex gap-4">
+            <Button
+              onClick={() => onOpen("loginModal")}
+              variant="contained"
+              size="small"
+            >
+              Login
+            </Button>
+            <Button
+              onClick={() => onOpen("signupModal")}
+              variant="outlined"
+              size="small"
+            >
+              Signup
+            </Button>
+          </div>
+        )}
+      </Container>
+    </header>
   );
 };

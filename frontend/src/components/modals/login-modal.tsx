@@ -55,7 +55,7 @@ export default function LoginModal() {
 
   return (
     <Modal open={open} title="Login">
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6 pt-3 pb-6 mt-3">
         <FormInput
           label="Email"
           error={errors.email?.message}

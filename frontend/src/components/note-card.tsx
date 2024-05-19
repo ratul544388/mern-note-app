@@ -26,9 +26,10 @@ export const NoteCard = ({ note }: NoteProps) => {
     >
       <DropdownMenu note={note} />
       <h3 className="font-semibold">{note.title}</h3>
-      <p className="text-gray-500 text-sm line-clamp-4 break-words mt-1">
-        {note.text}
-      </p>
+      <p
+        dangerouslySetInnerHTML={{ __html: note.text as string }}
+        className="text-gray-500 text-sm line-clamp-4 break-words mt-1"
+      />
     </div>
   );
 };

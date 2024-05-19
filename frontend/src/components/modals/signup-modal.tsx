@@ -55,7 +55,7 @@ export default function SignupModal() {
 
   return (
     <Modal open={open} title="Sign up">
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6 pt-3 pb-6 mt-3">
         <FormInput
           error={errors.name?.message}
           disabled={isPending}
